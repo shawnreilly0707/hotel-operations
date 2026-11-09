@@ -5,19 +5,22 @@ public class Employee {
     private float payRate;
     private int hoursWorked;
     private int overtimeHoursWorked;
+    private int punchInTime;
 
     public Employee(int employeeId,
                     String name,
                     String department,
                     float payRate,
                     int hoursWorked,
-                    int overtimeHoursWorked) {
+                    int overtimeHoursWorked,
+                    int punchInTime) {
         this.employeeId = employeeId;
         this.name = name;
         this.department = department;
         this.payRate = payRate;
         this.hoursWorked = hoursWorked;
         this.overtimeHoursWorked = overtimeHoursWorked;
+        this.punchInTime = punchInTime;
     }
 
     public int getEmployeeId() {
@@ -50,5 +53,14 @@ public class Employee {
 
     public int getOverTimeHours() {
         return this.overtimeHoursWorked;
+    }
+
+    public void punchIn(int time) {
+        this.punchInTime = time;
+    }
+
+    public void punchOut(int time) {
+        int hoursWorkedThisShift = time - this.punchInTime;
+        this.hoursWorked += hoursWorkedThisShift;
     }
 }
